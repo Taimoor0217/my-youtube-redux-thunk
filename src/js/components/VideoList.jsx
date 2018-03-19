@@ -13,7 +13,7 @@ class VideoList extends Components {
 
   render() {
     return (
-      <div className="video-list">
+      <div className="videoList">
         {
           isLoading ? <div>Loding Videos....</div> :
           error ? <div>{error.message}</div> : this.createList()
