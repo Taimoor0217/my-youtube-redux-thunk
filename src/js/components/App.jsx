@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // let { getVideos } = this.props;
+    // const { getVideos } = this.props;
     getVideos('javascript', true);
   }
 }
