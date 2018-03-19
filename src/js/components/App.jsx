@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Nav from './Nav';
 import VideoPlayer from './VideoPlayer';
+import VideoList from './VideoList';
+import { getVideos } from '../actions';
 
 class App extends Component {
   render() {
@@ -19,9 +22,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // const { getVideos } = this.props;
+    const { getVideos } = this.props;
     getVideos('javascript', true);
   }
 }
 
-export default App;
+export default connect(null, {getVideos})(App);

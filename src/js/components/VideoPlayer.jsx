@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 
-const VideoPlayer = ({ seletedVideo }) => {
-  if(Object.keys(seletedVideo).length) {
-    var seletedVideoURL = "https://www.youtube.com/embed/" + seletedVideo.id.videoId
+const VideoPlayer = ({ selectedVideo }) => {
+  if(Object.keys(selectedVideo).length) {
+    var selectedVideoURL = "https://www.youtube.com/embed/" + selectedVideo.id.videoId
   }
   return (
     <div className="videoPlayer">
@@ -12,7 +13,6 @@ const VideoPlayer = ({ seletedVideo }) => {
         <iframe 
           className="embed-responsive-item"
           src={selectedVideoURL} 
-          frameborder="0"
           allowFullScreen
         />
       </div>
@@ -21,7 +21,7 @@ const VideoPlayer = ({ seletedVideo }) => {
           {Object.keys(selectedVideo).length ? selectedVideo.snippet.title : ""}
         </h4>
         <p className="video-descriptions">
-          {Object.keys(seletedVideo).length ? selectedVideo.snippet.description : ""}
+          {Object.keys(selectedVideo).length ? selectedVideo.snippet.description : ""}
         </p>
       </div>
     </div>
@@ -29,6 +29,13 @@ const VideoPlayer = ({ seletedVideo }) => {
 };
 
 VideoPlayer.propTypes = {
+  selectedVideo: PropTypes.object.isRequired,
 }
 
-export default VideoPlayer;
+function mapStateToProps({selectedVideo}) {
+  return {
+    selectedVideo
+  };
+};
+
+export default connect(mapStateToProps)(VideoPlayer);

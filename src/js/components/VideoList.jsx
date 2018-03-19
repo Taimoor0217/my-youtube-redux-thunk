@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import VideoListEntry from './VideoListEntry';
+import { selectVideo } from '../actions';
 
-class VideoList extends Components {
+class VideoList extends Component {
 
   createList() {
-    return VideoList.map((item, i) => {
+    let { videoList, selectVideo } = this.props;
+    return videoList.map((item, i) => {
       return <VideoListEntry key={i} video={item} handleSelectedVideo={selectVideo} />
     })
   }
 
   render() {
+    let { videoList, isLoading, error } = this.props;
     return (
       <div className="videoList">
         {
@@ -23,4 +27,17 @@ class VideoList extends Components {
   }
 }
 
-export default VideoList;
+VideoList.propTypes = {
+  videoList: PropTypes.array.isRequired,
+  selectVideo: PropTypes.func.isRequired,
+}
+
+function mapStateToProps({videoList}) {
+  return {
+    videoList: videoList.videos,
+    isLoading: videoList.isLoading,
+    error: videoList.error
+  }
+};
+
+export default connect(mapStateToProps, {selectVideo})(VideoList);

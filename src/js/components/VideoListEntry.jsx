@@ -26,7 +26,8 @@ const VideoListEntry = ({ video, handleSelectedVideo }) => {
 }
 
 VideoListEntry.propTypes = {
-  
+  video: PropTypes.object.isRequired,
+  handleSelectedVideo: PropTypes.func.isRequired,
 }
 
 export default VideoListEntry;

@@ -33,6 +33,7 @@ class Search extends Component {
 }
 
 Search.propTypes = {
+  getVideos: PropTypes.func.isRequired,
 }
 
 export default Search;
