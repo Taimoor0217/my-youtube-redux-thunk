@@ -1,0 +1,12 @@
+.videoPlayer {
+  .player{
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 0 8px;
+  }
+
+  .video-details {
+    @extend .player;
+    padding: 20px;
+  }
+}
