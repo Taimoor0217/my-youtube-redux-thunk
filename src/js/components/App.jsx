@@ -6,7 +6,7 @@ import VideoPlayer from './VideoPlayer';
 import VideoList from './VideoList';
 import { getVideos } from '../actions';
 
-class App extends Component {
+export class App extends Component {
   render() {
     return (
       <div id="app">
