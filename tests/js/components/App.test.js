@@ -11,4 +11,7 @@ describe('testing App component', () => {
   it('renders the App component', () => {
     expect(wrapper).toMatchSnapshot();
   });
+  it('tests that getVideos run with correct args', () => {
+    expect(getVideos.mock.calls[0]).toEqual(['javascript', true]);
+  });
 });
