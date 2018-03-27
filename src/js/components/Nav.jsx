@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Search from './Search';
 import { getVideos } from '../actions';
 
-const Nav = (props) => {
+export const Nav = (props) => {
   return (
     <div className="nav">
       <Search {...props} />
