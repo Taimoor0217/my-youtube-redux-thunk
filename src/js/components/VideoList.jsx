@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import VideoListEntry from './VideoListEntry';
 import { selectVideo } from '../actions';
 
-class VideoList extends Component {
+export class VideoList extends Component {
 
   createList() {
     let { videoList, selectVideo } = this.props;
