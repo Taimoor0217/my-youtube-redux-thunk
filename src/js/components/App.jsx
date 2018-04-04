@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { func } from 'prop-types';
 
 import Nav from './Nav';
 import VideoPlayer from './VideoPlayer';
 import VideoList from './VideoList';
-import { getVideos } from '../actions';
+import * as actions from '../actions';
 
 export class App extends Component {
+
+  componentDidMount() {
+    const { getVideos } = this.props;
+    getVideos('javascript', true);
+  }
+
   render() {
     return (
       <div id="app">
@@ -20,11 +27,10 @@ export class App extends Component {
       </div>
     );
   }
-
-  componentDidMount() {
-    const { getVideos } = this.props;
-    getVideos('javascript', true);
-  }
 }
 
-export default connect(null, {getVideos})(App);
+App.propTypes = {
+  getVideos: func.isRequired,
+}
+
+export default connect(null, { getVideos: actions.getVideos })(App);
