@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
+import { func } from 'prop-types';
 
 export default class Search extends Component {
 
@@ -30,7 +29,7 @@ export default class Search extends Component {
           value={this.state.value}
         />
         <button className="btn">
-          <span className="glyphicons glyphicons-search"></span>
+          <span className="glyphicons glyphicons-search" />
         </button>
       </div>
     );
@@ -38,5 +37,5 @@ export default class Search extends Component {
 }
 
 Search.propTypes = {
-  getVideos: PropTypes.func.isRequired,
+  getVideos: func.isRequired,
 }

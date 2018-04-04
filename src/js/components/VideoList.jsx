@@ -1,38 +1,62 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { shape, func, string, arrayOf, bool } from 'prop-types';
 import { connect } from 'react-redux';
 
 import VideoListEntry from './VideoListEntry';
-import { selectVideo } from '../actions';
+import * as actions from '../actions';
 
 export class VideoList extends Component {
 
   createList() {
-    let { videoList, selectVideo } = this.props;
-    return videoList.map((item, i) => {
-      return <VideoListEntry key={i} video={item} handleSelectedVideo={selectVideo} />
-    })
+    const { videoList, selectVideo } = this.props;
+    videoList.map(item => (
+      <VideoListEntry
+        key={item.id.videoId || item.id.playlistId}
+        video={item}
+        handleSelectedVideo={selectVideo}
+      />
+    ));
   }
 
   render() {
-    let { videoList, isLoading, error } = this.props;
+    const { isLoading, error } = this.props;
+    let content;
+    if (isLoading) {
+      content = <div>Loading Videos...</div>;
+    } else if (error) {
+      content = <div>{error.message}</div>
+    } else {
+      content = this.createList();
+    }
+
     return (
       <div className="videoList">
-        {
-          isLoading ? <div>Loding Videos....</div> :
-          error ? <div>{error.message}</div> : this.createList()
-        }
+        { content }
       </div>
     );
   }
 }
 
 VideoList.propTypes = {
-  videoList: PropTypes.array.isRequired,
-  selectVideo: PropTypes.func.isRequired,
-}
+  videoList: arrayOf(
+    shape({
+      id: shape({
+        videoId: string,
+      })
+    })
+  ).isRequired,
+  selectVideo: func.isRequired,
+  isLoading: bool.isRequired,
+  error: shape({
+    message: string
+  })
+};
 
-function mapStateToProps({videoList}) {
+VideoList.defaultProps = {
+  error: null
+};
+
+function mapStateToProps({ videoList }) {
   return {
     videoList: videoList.videos,
     isLoading: videoList.isLoading,
@@ -40,4 +64,4 @@ function mapStateToProps({videoList}) {
   }
 };
 
-export default connect(mapStateToProps, {selectVideo})(VideoList);
+export default connect(mapStateToProps, { selectVideo: actions.selectVideo })(VideoList);

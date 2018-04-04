@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import React from 'react';
+import { shape, string } from 'prop-types';
+import { connect } from 'react-redux';
 
-
-const VideoPlayer = ({ selectedVideo }) => {
-  if(Object.keys(selectedVideo).length) {
-    var selectedVideoURL = "https://www.youtube.com/embed/" + selectedVideo.id.videoId
+export const VideoPlayer = ({ selectedVideo }) => {
+  let selectedVideoURL;
+  if (Object.keys(selectedVideo).length) {
+    selectedVideoURL = `https://www.youtube.com/embed/${selectedVideo.id.videoId}`;
   }
   return (
     <div className="videoPlayer">
       <div className="player embed-responsive embed-responsive-16by9">
-        <iframe 
+        <iframe
           className="embed-responsive-item"
-          src={selectedVideoURL} 
+          src={selectedVideoURL}
+          title="Video player"
           allowFullScreen
         />
       </div>
@@ -29,10 +30,18 @@ const VideoPlayer = ({ selectedVideo }) => {
 };
 
 VideoPlayer.propTypes = {
-  selectedVideo: PropTypes.object.isRequired,
+  selectedVideo: shape({
+    id: shape({
+      videoId: string
+    }),
+    snippet: shape({
+      title: string,
+      description: string
+    })
+  }).isRequired,
 }
 
-function mapStateToProps({selectedVideo}) {
+function mapStateToProps({ selectedVideo }) {
   return {
     selectedVideo
   };
