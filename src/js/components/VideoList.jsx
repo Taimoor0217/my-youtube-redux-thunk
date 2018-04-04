@@ -9,7 +9,7 @@ export class VideoList extends Component {
 
   createList() {
     const { videoList, selectVideo } = this.props;
-    videoList.map(item => (
+    return videoList.map(item => (
       <VideoListEntry
         key={item.id.videoId || item.id.playlistId}
         video={item}

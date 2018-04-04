@@ -10,15 +10,17 @@ const initial = {
   videos: []
 }
 
-export default function(state=initial, action) {
-  switch(action.type) {
+export default function (state = initial, action) {
+  let videos;
+  switch (action.type) {
     case FETCH_VIDEOS_ATTEMPT:
-      return {...state, isLoading: true};
+      return { ...state, isLoading: true };
     case FETCH_VIDEOS_SUCCESS:
-      const videos = action.payload.items;
-      return {...state, videos, isLoading: false, error: null};
+      videos = action.payload.items;
+      return { ...state, videos, isLoading: false, error: null };
     case FETCH_VIDEO_FAIL:
-      return {...state, isLoading: false, error: action.payload}
+      return { ...state, isLoading: false, error: action.payload };
+    default:
+      return state;
   }
-  return state;
 }

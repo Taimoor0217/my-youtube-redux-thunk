@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { shape, func, string } from 'prop-types';
 
 const VideoListEntry = ({ video, handleSelectedVideo }) => (
-    <div className="videoListEntry">
-      <div className="media">
-        <div className="media-left media-middle">
-          <img 
-            className="media-object"
-            alt="thumbnails"
-            src={video.snippet.thumbnails.default.url}
-          />
-        </div>
-        <div className="media-body">
-          <button
-            className="media-heading"
-            onClick={() => handleSelectedVideo(video)}
-          >
-            {video.snippet.title}
-          </button>
-          <p className="media-description">{video.snippet.description}</p>
-        </div>
+  <div className="videoListEntry">
+    <div className="media">
+      <div className="media-left media-middle">
+        <img
+          className="media-object"
+          alt="thumbnails"
+          src={video.snippet.thumbnails.default.url}
+        />
+      </div>
+      <div className="media-body">
+        <button
+          className="media-heading"
+          onClick={() => handleSelectedVideo(video)}
+        >
+          {video.snippet.title}
+        </button>
+        <p className="media-description">{video.snippet.description}</p>
       </div>
     </div>
-  )
+  </div>
+)
 
 VideoListEntry.propTypes = {
   video: shape({
