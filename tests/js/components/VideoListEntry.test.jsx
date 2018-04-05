@@ -5,7 +5,7 @@ import { VideoList } from '../../../src/js/components/VideoList';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('testing VideoList component', () => {
+describe('VideoListEntry Component', () => {
   const videoList = [{}, {}];
   const selectVideo = jest.fn();
   it('renders the VideoList component', () => {
