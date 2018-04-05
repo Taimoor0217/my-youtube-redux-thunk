@@ -5,12 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
+    "test:watch": "jest --watch",
     "dev": "webpack-dev-server --config webpack.config.dev.js",
     "prod": "webpack --config webpack.config.prod.js -p"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Taimoormk/my-youtube-redux.git"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "author": "Taimoor Khan",
   "license": "MIT",
