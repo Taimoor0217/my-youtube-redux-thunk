@@ -5,13 +5,19 @@ import { App } from '../../../src/js/components/App';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('testing App component', () => {
-  const getVideos = jest.fn();
-  const wrapper = shallow(<App getVideos={getVideos} />);
-  it('renders the App component', () => {
+describe('App Component', () => {
+  let getVideos, wrapper;
+
+  beforeEach(() => {
+    getVideos = jest.fn();
+    wrapper = shallow(<App getVideos={getVideos} />);
+  });
+
+  it('renders', () => {
     expect(wrapper).toMatchSnapshot();
   });
-  it('tests that getVideos run with correct args', () => {
+
+  it('should run getVideos with correct args', () => {
     expect(getVideos.mock.calls[0]).toEqual(['javascript', true]);
   });
 });
