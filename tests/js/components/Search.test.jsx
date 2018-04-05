@@ -5,14 +5,20 @@ import Search from '../../../src/js/components/Search';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('testing Search component', () => {
-  const getVideos = jest.fn();
-  const wrapper = shallow(<Search getVideos={getVideos} />);
-  it('renders the App component', () => {
+describe('Search Component', () => {
+  let getVideos, wrapper;
+
+  beforeEach(() => {
+    getVideos = jest.fn();
+    wrapper = shallow(<Search getVideos={getVideos} />);
+  });
+
+  it('renders', () => {
     expect(wrapper).toMatchSnapshot();
   });
-  it('runs the getVideos function with correct args', () => {
-    wrapper.find('input').simulate('change', {target:{value: 'java'}});
+
+  it('runs getVideos on input handler', () => {
+    wrapper.find('input').simulate('change', { target: { value: 'java' } });
     expect(getVideos.mock.calls[0]).toEqual(['java']);
   });
 });
