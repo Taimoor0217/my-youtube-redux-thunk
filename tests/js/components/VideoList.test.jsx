@@ -1,12 +1,12 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import VideoList from '../../../src/js/components/VideoList';
+import { VideoList } from '../../../src/js/components/VideoList';
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('VideoList Component', () => {
-  let VideoList, selectVideo;
+  let videoList, selectVideo;
 
   beforeEach(() => {
     videoList = [

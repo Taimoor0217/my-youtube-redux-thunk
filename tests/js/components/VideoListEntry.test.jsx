@@ -6,28 +6,35 @@ import { VideoList } from '../../../src/js/components/VideoList';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('VideoListEntry Component', () => {
-  const videoList = [{}, {}];
-  const selectVideo = jest.fn();
-  it('renders the VideoList component', () => {
-    const isLoading = false;
-    const error = null;
-    const wrapper = shallow(<VideoList selectVideo={selectVideo} videoList={videoList} isLoading={isLoading} error={error} />);
+  let handleSelectedVideo, wrapper;
+  const video = {
+    snippet: {
+      title: 'some title',
+      description: 'some description',
+      thumbnails: {
+        default: {
+          url: 'something'
+        }
+      }
+    }
+  };
+
+  beforeEach(() => {
+    handleSelectedVideo = jest.fn();
+    wrapper = shallow(
+      <VideoListEntry
+        handleSelectedVideo={handleSelectedVideo}
+        video={video}
+      />
+    );
+  });
+
+  it('renders', () => {
     expect(wrapper).toMatchSnapshot();
   });
-  it('renders the Loading message', () => {
-    const isLoading = true;
-    const error = null;
-    const wrapper = shallow(<VideoList selectVideo={selectVideo} videoList={videoList} isLoading={isLoading} error={error} />);
-    expect(wrapper).toMatchSnapshot();
-  });
-  it('renders the Error message', () => {
-    const isLoading = false;
-    const error = { message: 'Error while Loading videos' };
-    const wrapper = shallow(<VideoList selectVideo={selectVideo} videoList={videoList} isLoading={isLoading} error={error} />);
-    expect(wrapper).toMatchSnapshot();
-  });
-  it('passes on the selecVideo', () => {
-    const selectVideo = jest.fn();
-    expect(selectVideo.mock.calls.length).toBe(0);
+
+  it('runs handleSelectedVideo on click handler', () => {
+    wrapper.find('.media-heading').simulate('click');
+    expect(handleSelectedVideo.mock.calls[0]).toEqual([video]);
   });
 });
