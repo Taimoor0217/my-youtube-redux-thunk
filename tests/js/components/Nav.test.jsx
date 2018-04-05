@@ -5,13 +5,19 @@ import { Nav } from '../../../src/js/components/Nav';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('testing Nav component', () => {
-  const getVideos = jest.fn();
-  const wrapper = shallow(<Nav getVideos={getVideos} />);
-  it('renders the Nav component', () => {
+describe('Nav Component', () => {
+  let getVideos, wrapper;
+
+  beforeEach(() => {
+    getVideos = jest.fn();
+    wrapper = shallow(<Nav getVideos={getVideos} />);
+  });
+
+  it('renders', () => {
     expect(wrapper).toMatchSnapshot();
   });
-  it('passing on the getVideos function', () => {
+
+  it('passes on getVideos', () => {
     expect(getVideos.mock.calls.length).toBe(0);
   });
 });

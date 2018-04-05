@@ -1,11 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Nav Component renders 1`] = `
+exports[`testing VideoList component renders the Error message 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Nav
-    getVideos={[MockFunction]}
+  Symbol(enzyme.__unrendered__): <VideoList
+    error={
+      Object {
+        "message": "Error while Loading videos",
+      }
+    }
+    isLoading={false}
+    selectVideo={[MockFunction]}
+    videoList={
+      Array [
+        Object {},
+        Object {},
+      ]
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -19,22 +31,22 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <Search
-        getVideos={[MockFunction]}
-      />,
-      "className": "nav",
+      "children": <div>
+        Error while Loading videos
+      </div>,
+      "className": "videoList",
     },
     "ref": null,
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "host",
       "props": Object {
-        "getVideos": [MockFunction],
+        "children": "Error while Loading videos",
       },
       "ref": null,
-      "rendered": null,
-      "type": [Function],
+      "rendered": "Error while Loading videos",
+      "type": "div",
     },
     "type": "div",
   },
@@ -44,22 +56,22 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": <Search
-          getVideos={[MockFunction]}
-        />,
-        "className": "nav",
+        "children": <div>
+          Error while Loading videos
+        </div>,
+        "className": "videoList",
       },
       "ref": null,
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "host",
         "props": Object {
-          "getVideos": [MockFunction],
+          "children": "Error while Loading videos",
         },
         "ref": null,
-        "rendered": null,
-        "type": [Function],
+        "rendered": "Error while Loading videos",
+        "type": "div",
       },
       "type": "div",
     },
@@ -74,12 +86,20 @@ ShallowWrapper {
 }
 `;
 
-exports[`testing Nav component renders the Nav component 1`] = `
+exports[`testing VideoList component renders the Loading message 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Nav
-    getVideos={[MockFunction]}
+  Symbol(enzyme.__unrendered__): <VideoList
+    error={null}
+    isLoading={true}
+    selectVideo={[MockFunction]}
+    videoList={
+      Array [
+        Object {},
+        Object {},
+      ]
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -93,22 +113,22 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <Search
-        getVideos={[MockFunction]}
-      />,
-      "className": "nav",
+      "children": <div>
+        Loading Videos...
+      </div>,
+      "className": "videoList",
     },
     "ref": null,
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "host",
       "props": Object {
-        "getVideos": [MockFunction],
+        "children": "Loading Videos...",
       },
       "ref": null,
-      "rendered": null,
-      "type": [Function],
+      "rendered": "Loading Videos...",
+      "type": "div",
     },
     "type": "div",
   },
@@ -118,22 +138,22 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": <Search
-          getVideos={[MockFunction]}
-        />,
-        "className": "nav",
+        "children": <div>
+          Loading Videos...
+        </div>,
+        "className": "videoList",
       },
       "ref": null,
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "host",
         "props": Object {
-          "getVideos": [MockFunction],
+          "children": "Loading Videos...",
         },
         "ref": null,
-        "rendered": null,
-        "type": [Function],
+        "rendered": "Loading Videos...",
+        "type": "div",
       },
       "type": "div",
     },
