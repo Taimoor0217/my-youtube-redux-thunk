@@ -1,7 +1,7 @@
 {
-  "name": "my-youtube-redux",
+  "name": "my-youtube-redux-thunk",
   "version": "1.0.0",
-  "description": "My Youtube project build using Reactjs and Redux technologies",
+  "description": "My youtube application built using ReactJs, Redux, Redux Thunk, SCSS",
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Taimoormk/my-youtube-redux.git"
+    "url": "git+https://github.com/Taimoormk/my-youtube-redux-thunk.git"
   },
   "jest": {
     "snapshotSerializers": [
@@ -21,9 +21,9 @@
   "author": "Taimoor Khan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Taimoormk/my-youtube-redux/issues"
+    "url": "https://github.com/Taimoormk/my-youtube-redux-thunk/issues"
   },
-  "homepage": "https://github.com/Taimoormk/my-youtube-redux#readme",
+  "homepage": "https://github.com/Taimoormk/my-youtube-redux-thunk#readme",
   "dependencies": {
     "axios": "^0.17.1",
     "bootstrap": "^3.3.7",
